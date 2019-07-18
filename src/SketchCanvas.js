@@ -74,10 +74,6 @@ class SketchCanvas extends React.Component {
     permissionDialogMessage: '',
   };
 
-  state = {
-    text: null
-  }
-
   constructor(props) {
     super(props)
     this._pathsToProcess = []
@@ -88,8 +84,9 @@ class SketchCanvas extends React.Component {
     this._offset = { x: 0, y: 0 }
     this._size = { width: 0, height: 0 }
     this._initialized = false
-
-    this.state.text = this._processText(props.text ? props.text.map(t => Object.assign({}, t)) : null)
+    this.state = {
+      text: this._processText(props.text ? props.text.map(t => Object.assign({}, t)) : null)
+    }
   }
   static getDerivedStateFromProps(props, state) {
     this.setState({
